@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa Bai Hat</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/songs}">
+        Back to song list
+    </a>
+</p>
+<form th:method="post" th:action="@{/songs/delete}" th:object="${songForm}" novalidate="novalidate"
+      enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <td><label for="name">Name</label></td>
+            <td><input id="name" th:field="*{name}" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="singer">Singer</label></td>
+            <td><input id="singer" th:field="*{singer}" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="category">Category</label></td>
+            <td><input id="category" th:field="*{category}" type="text"/></td>
+        </tr>
+        <td>
+            <audio controls>
+                <source th:src="@{'/image/' + ${songForm.path}}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </td>
+        <tr>
+            <td>
+                <input type="submit" value="Remove"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Them Nhac</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/songs}">
+        Back to song list
+    </a>
+</p>
+<form th:method="post" th:action="@{/songs/update}" th:object="${songForm}" novalidate="novalidate"
+      enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <td><label for="name">Name</label></td>
+            <td><input id="name" th:field="*{name}" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="singer">Singer</label></td>
+            <td><input id="singer" th:field="*{singer}" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="category">Category</label></td>
+            <td><input id="category" th:field="*{category}" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label for="path">Path</label></td>
+            <td><input id="path" th:field="*{path}" type="file"/></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Update"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
